@@ -6,12 +6,19 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Custumers", "Custumers", "{EEB8C975-2DEA-4B8C-A92F-06320CC402E6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Costumers.API", "Costumers.API\Costumers.API.csproj", "{499B7712-1027-4A1F-9B72-EE7C7CB8FB68}"
+	ProjectSection(ProjectDependencies) = postProject
+		{423C47B3-AB60-4861-8A1B-14EEB761D2D7} = {423C47B3-AB60-4861-8A1B-14EEB761D2D7}
+		{D2190BB8-E68E-4EB2-AAE3-A208127CDC99} = {D2190BB8-E68E-4EB2-AAE3-A208127CDC99}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Custumers.Domain", "Custumers.Domain\Custumers.Domain.csproj", "{8898D567-B9AD-4741-9E67-26610FDFB2C6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Custumers.Infra", "Custumers.Infra\Custumers.Infra.csproj", "{423C47B3-AB60-4861-8A1B-14EEB761D2D7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Custumers.Application", "Custumers.Application\Custumers.Application.csproj", "{D2190BB8-E68E-4EB2-AAE3-A208127CDC99}"
+	ProjectSection(ProjectDependencies) = postProject
+		{423C47B3-AB60-4861-8A1B-14EEB761D2D7} = {423C47B3-AB60-4861-8A1B-14EEB761D2D7}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Products", "Products", "{855AEC7E-C682-4055-BCC9-B6B721238821}"
 EndProject
