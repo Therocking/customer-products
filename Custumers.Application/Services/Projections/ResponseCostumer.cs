@@ -21,6 +21,8 @@ namespace Custumers.Application.Services.Projections
                 Address = entity.Address,
                 LastPurchaseDate = entity.LastPurchaseDate,
             };
+
+            return dtos;
         }
     }
 }

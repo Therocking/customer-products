@@ -30,5 +30,75 @@ namespace Costumers.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            try
+            {
+                var costumers = await _service.GetAll();
+                return Ok(costumers);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("id")]
+        public async Task<IActionResult> GetById(string id)
+        {
+            try
+            {
+                var costumer = await _service.GetById(id);
+                return Ok(costumer);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("registerDate")]
+        public async Task<IActionResult> GetByRegisterDate(DateTimeOffset registerDate)
+        {
+            try
+            {
+                var costumer = await _service.GetAllByRegisterDate(registerDate);
+                return Ok(costumer);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("id")]
+        public async Task<IActionResult> Update([FromBody] UpdateCostumerDto updateDto)
+        {
+            try
+            {
+                var costumer = await _service.Update(updateDto);
+                return Ok(costumer);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("id")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            try
+            {
+                var costumer = await _service.Delete(id);
+                return Ok(costumer);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

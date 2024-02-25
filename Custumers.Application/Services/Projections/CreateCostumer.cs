@@ -14,6 +14,7 @@ namespace Custumers.Application.Services.Projections
         {
             var entity = new CostumerEntity
             {
+                Id = Guid.NewGuid().ToString(),
                 FirstName = createDto.FirstName,
                 LastName = createDto.LastName,
                 Email = createDto.Email,
