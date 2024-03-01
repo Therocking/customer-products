@@ -56,6 +56,7 @@ namespace Custumers.Application.Services
         public async Task<ResponseCostumerDto> GetById(string id)
         {
             var costumer = await _repository.GetById(id);
+            if (costumer is null) throw new CostumerNotFound();
 
             return ResponseCostumer.EntityToDto(costumer);
         }

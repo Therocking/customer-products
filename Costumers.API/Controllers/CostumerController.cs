@@ -23,7 +23,7 @@ namespace Costumers.API.Controllers
             {
                 var user = await _service.Add(createDto);
 
-                return StatusCode(202, user);
+                return StatusCode(201, user);
             }
             catch (Exception ex)
             {
@@ -45,12 +45,13 @@ namespace Costumers.API.Controllers
             }
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string id)
         {
             try
             {
                 var costumer = await _service.GetById(id);
+                if (costumer is null) return NotFound("User not found");
                 return Ok(costumer);
             }
             catch (Exception ex)
@@ -59,7 +60,7 @@ namespace Costumers.API.Controllers
             }
         }
 
-        [HttpGet("registerDate")]
+        [HttpGet("date/{registerDate}")]
         public async Task<IActionResult> GetByRegisterDate(DateTimeOffset registerDate)
         {
             try
@@ -73,11 +74,12 @@ namespace Costumers.API.Controllers
             }
         }
 
-        [HttpPut("id")]
-        public async Task<IActionResult> Update([FromBody] UpdateCostumerDto updateDto)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(string id, [FromBody] UpdateCostumerDto updateDto)
         {
             try
             {
+                updateDto.Id = id;
                 var costumer = await _service.Update(updateDto);
                 return Ok(costumer);
             }
@@ -87,7 +89,7 @@ namespace Costumers.API.Controllers
             }
         }
 
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
             try

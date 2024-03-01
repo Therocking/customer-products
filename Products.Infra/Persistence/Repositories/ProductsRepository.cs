@@ -32,12 +32,12 @@ namespace Products.Infra.Persistence.Repositories
 
         public async Task<ProductsEntity> GetById(string id)
         {
-            return await _dbContext.Product.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _dbContext.Product.Where(x => x.Id == id && !x.IsDeleted).FirstOrDefaultAsync();
         }
 
         public async Task<ProductsEntity> GetByName(string name)
         {
-            return await _dbContext.Product.Where(x => x.Name == name).FirstOrDefaultAsync();
+            return await _dbContext.Product.Where(x => x.Name == name && !x.IsDeleted).FirstOrDefaultAsync();
         }
 
         public async Task<List<ProductsEntity>> GetAllByCategory(string category)

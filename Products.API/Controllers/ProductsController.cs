@@ -47,7 +47,7 @@ namespace Products.API.Controllers
             }
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string id)
         {
             try
@@ -62,7 +62,7 @@ namespace Products.API.Controllers
             }
         }
 
-        [HttpGet("name")]
+        [HttpGet("name/{name}")]
         public async Task<IActionResult> GetByName(string name)
         {
             try
@@ -77,7 +77,7 @@ namespace Products.API.Controllers
             }
         }
 
-        [HttpGet("category")]
+        [HttpGet("category/{category}")]
         public async Task<IActionResult> GetByCategory(string category)
         {
             try
@@ -92,11 +92,12 @@ namespace Products.API.Controllers
             }
         }
 
-        [HttpPut("id")]
-        public async Task<IActionResult> Update([FromBody] UpdateProductDto updateDto)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(string id, [FromBody] UpdateProductDto updateDto)
         {
             try
             {
+                updateDto.Id = id;
                 var product = await _service.Update(updateDto);
 
                 return Ok(product);
@@ -107,7 +108,7 @@ namespace Products.API.Controllers
             }
         }
 
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
             try

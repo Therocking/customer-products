@@ -27,17 +27,17 @@ namespace Custumers.Infra.Persistence.Repositories
 
         public async Task<List<CostumerEntity>> GetAll()
         {
-            return await _context.Costumers.Where(x => x.IsDeleted == false).ToListAsync();
+            return await _context.Costumers.Where(x => !x.IsDeleted).ToListAsync();
         }
 
         public async Task<List<CostumerEntity>> GetAllByRegisterDate(DateTimeOffset registerDate)
         {
-            return await _context.Costumers.Where(x => x.RegisterDate == registerDate && x.IsDeleted == false).ToListAsync();
+            return await _context.Costumers.Where(x => x.RegisterDate == registerDate && !x.IsDeleted).ToListAsync();
         }
 
         public async Task<CostumerEntity> GetById(string id)
         {
-            return await _context.Costumers.Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefaultAsync();
+            return await _context.Costumers.Where(x => x.Id == id && !x.IsDeleted).FirstOrDefaultAsync();
         }
 
         public async Task Update(CostumerEntity entity)

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +10,7 @@ namespace Custumers.Domain.Entities
 {
     public class CostumerEntity
     {
+        [Key]
         public string Id {  get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -16,6 +19,7 @@ namespace Custumers.Domain.Entities
         public string? PhoneNumber { get; set; }
         public DateTimeOffset RegisterDate { get; set; }
         public DateTimeOffset? LastPurchaseDate { get; set;}
-        public bool? IsDeleted { get; set; }
+        [DefaultValue(true)]
+        public bool IsDeleted { get; set; }
     }
 }
